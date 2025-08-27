@@ -19,7 +19,7 @@ const App = () => {
 
     const getCityData = async () => {
         try {
-            const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`);
+            const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`);
             const data = await response.json();
             setCityOptions(data);
         } catch (error) {
@@ -44,7 +44,6 @@ const App = () => {
             const response = await fetch(url);
             const data = await response.json();
             setWeatherData(data);
-            console.log(data);
         }
         getWeatherData();
     }, [lat, lon, url, apiKey]);
