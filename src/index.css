@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body {
+  font-family: rubik;
+  background-color: #27272A;
+}
+
+#root {
+  height: 100vh;
+}
