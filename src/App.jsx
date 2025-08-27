@@ -51,7 +51,7 @@ const App = () => {
     useEffect(() => {
         const getGeoData = async () => {
             try {
-                const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`);
+                const response = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`);
                 const data = await response.json();
                 setSelectedCity(data[0].name);
                 setSelectedCountry(data[0].country);
