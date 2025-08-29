@@ -31,7 +31,7 @@ export const Header = ({ city, setCity, handleSubmit, cityOptions, searching, se
                 {searching == true && city ? (
                 <ul className="absolute top-full left-0 w-full mt-1 bg-zinc-600 rounded-b-[30px] text-white shadow-lg z-10">
                     {cityOptions.map((item, index) => (
-                        <li key={index} className="px-4 py-2 hover:bg-zinc-500 cursor-pointer" onMouseDown={() => {setLat(item.lat); setLon(item.lon)}}>
+                        <li key={index} className="px-4 py-2 hover:bg-zinc-500 cursor-pointer" onMouseDown={() => {setLat(item.lat); setLon(item.lon); setSearching(false);}}>
                             <span>{item.name}, {item.country}</span>
                             <img src={`https://flagsapi.com/${item.country}/flat/24.png`} alt={`bandeira ${item.country}`} className="inline mx-2" />
                             <span>{item.lat.toFixed(3)}, {item.lon.toFixed(3)}</span>

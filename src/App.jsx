@@ -4,6 +4,7 @@ import { MainComponent } from "./components/MainComponent";
 import { WeatherInfo } from "./components/WeatherInfo";
 import { HourlyForecast } from "./components/HourlyForecast";
 import { Sidebar } from "./components/Sidebar";
+import { Loading } from "./components/Loading";
 
 const App = () => {
     const apiKey = import.meta.env.VITE_APIKEY;
@@ -16,6 +17,7 @@ const App = () => {
     const [searching, setSearching] = useState(false);
     const [selectedCity, setSelectedCity] = useState();
     const [selectedCountry, setSelectedCountry] = useState();
+    const [loading, setLoading] = useState(false);
 
     const getCityData = async () => {
         try {
@@ -40,10 +42,12 @@ const App = () => {
 
     useEffect(() => {
         const getWeatherData = async () => {
+            setLoading(true);
             setUrl(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&lang=pt_br&appid=${apiKey}`);
             const response = await fetch(url);
             const data = await response.json();
             setWeatherData(data);
+            setLoading(false)
         }
         getWeatherData();
     }, [lat, lon, url, apiKey]);
@@ -116,6 +120,8 @@ const App = () => {
                 setLon={setLon} 
             />
             <main className="text-white xl:px-40 sm:px-10 md:px-40 lg:px-60 px-2 mt-14 flex justify-center gap-6 xl:flex-row flex-col">
+                {loading ? <Loading /> : (
+                <>
                 <div className="flex flex-col gap-2.5">
                     <MainComponent 
                         selectedCity={selectedCity} 
@@ -145,9 +151,9 @@ const App = () => {
                         hourlyForecastUrl12={hourlyForecastUrl12}
                     />
                 </div>
-                <Sidebar 
-                    dailyForecast={dailyForecast}
-                />
+                <Sidebar dailyForecast={dailyForecast} />
+             </>)
+             }
             </main>
         </>
     )
