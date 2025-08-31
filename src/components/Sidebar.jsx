@@ -23,10 +23,10 @@ export const Sidebar = ({ dailyForecast }) => {
                                 <img
                                     src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
                                     alt={item.weather[0].description}
-                                    className="w-12 h-12 mx-auto"
+                                    className="w-12 h-12 mr-auto select-none"
                                 />
                                 <p>{Math.ceil(item.temp.max - 273.15)}/{Math.ceil(item.temp.min - 273.15)}°C</p>
-                                <p className="ml-2 font-light sm:text-sm text-xs">{item.weather[0].description}</p>
+                                <p className="ml-2 font-light sm:text-sm text-xs w-[100px] text-right">{item.weather[0].description}</p>
                             </span>
                         </div>
                     );

@@ -15,7 +15,7 @@ export const WeatherInfo = ({ rain, humidity, windSpeed }) => {
             <span>
                 <span>
                     <img src={water} alt="Ícone de humidade" className="w-[32px] inline mr-[6px]"/>
-                    <span className="sm:text-lg text-sm">Humidade</span>
+                    <span className="sm:text-lg text-sm">Umidade</span>
                 </span>
                 <p className="text-center font-semibold text-xl">{humidity}%</p>
             </span>
